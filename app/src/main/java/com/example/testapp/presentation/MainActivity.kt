@@ -1,4 +1,4 @@
-package com.example.testapp
+package com.example.testapp.presentation
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -15,10 +15,10 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.example.testapp.data.Note
-import com.example.testapp.data.NoteViewModel
+import com.example.testapp.domain.model.Note
 import com.example.testapp.ui.theme.TestAppTheme
 import androidx.compose.ui.graphics.Color
+
 
 class MainActivity : ComponentActivity() {
 
@@ -97,7 +97,13 @@ fun NoteContent(
                 if (title.isNotBlank()) {
 
                     if (editingNote == null) {
-                        onAdd(Note(title = title, description = description))
+                        onAdd(
+                            Note(
+                                id = 0,
+                                title = title,
+                                description = description
+                            )
+                        )
                     } else {
                         editingNote?.let {
                             onUpdate(
@@ -118,8 +124,7 @@ fun NoteContent(
             colors = ButtonDefaults.buttonColors(
                 containerColor = Color.Black,
                 contentColor = Color.Yellow
-            ),
-
+            )
         ) {
             Text(if (editingNote == null) "Ekle" else "Güncelle")
         }
@@ -192,7 +197,6 @@ fun NoteContent(
 @Preview(showBackground = true)
 @Composable
 fun PreviewNoteContent() {
-
     TestAppTheme {
         NoteContent(
             notes = emptyList(),
