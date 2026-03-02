@@ -14,6 +14,7 @@ class NoteViewModel(application: Application) : AndroidViewModel(application) {
 
     val allNotes = repository.getNotes()
 
+
     fun insert(note: Note) = viewModelScope.launch {
         repository.insert(note)
     }

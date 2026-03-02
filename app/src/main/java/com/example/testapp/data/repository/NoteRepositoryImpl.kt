@@ -17,6 +17,9 @@ class NoteRepositoryImpl(
             list.map { it.toDomain() }
         }
     }
+    override fun getNoteById(id: Int): Flow<Note?> {
+        return dao.getNoteById(id).map { it?.toDomain() }
+    }
 
     override suspend fun insert(note: Note) {
         dao.insert(note.toEntity())
