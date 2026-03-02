@@ -36,7 +36,7 @@ class MainActivity : ComponentActivity() {
                                 navController.navigate(Routes.Notes.route)
                             },
                             titleColor = Color.Black,
-                            goNotesTextColor = Color.LightGray
+                            goNotesTextColor = Color.Gray
                         )
                     }
 

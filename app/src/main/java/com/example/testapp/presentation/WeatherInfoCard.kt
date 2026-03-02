@@ -62,12 +62,7 @@ private data class WeatherNow(val tempC: Int, val desc: String)
 private suspend fun fetchIstanbulCurrentWeather(): WeatherNow =
     withContext(Dispatchers.IO) {
 
-        val url = URL(
-            "https://api.open-meteo.com/v1/forecast" +
-                    "?latitude=41.0082&longitude=28.9784" +
-                    "&current_weather=true" +
-                    "&timezone=Europe%2FIstanbul"
-        )
+        val url = URL("https://api.open-meteo.com/v1/forecast?latitude=41.0082&longitude=28.9784&current_weather=true&timezone=Europe%2FIstanbul")
 
         val conn = (url.openConnection() as HttpURLConnection).apply {
             requestMethod = "GET"
