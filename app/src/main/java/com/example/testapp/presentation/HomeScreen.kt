@@ -37,7 +37,6 @@ fun HomeScreen(
 
                 Spacer(Modifier.height(8.dp))
 
-                // ✅ FAB'ın ALTINDA
                 WeatherInfoCard()
             }
         }
